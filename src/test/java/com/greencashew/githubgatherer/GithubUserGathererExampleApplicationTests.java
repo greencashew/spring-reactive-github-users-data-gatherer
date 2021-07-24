@@ -1,10 +1,10 @@
-package com.greencashew.reactive.example;
+package com.greencashew.githubgatherer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GithubUserGathererReactiveExampleApplicationTests {
+class GithubUserGathererExampleApplicationTests {
 
     @Test
     void contextLoads() {

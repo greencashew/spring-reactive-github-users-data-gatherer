@@ -1,13 +1,13 @@
-package com.greencashew.reactive.example;
+package com.greencashew.githubgatherer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GithubUserGathererReactiveExampleApplication {
+public class GithubUserGathererExampleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GithubUserGathererReactiveExampleApplication.class, args);
+        SpringApplication.run(GithubUserGathererExampleApplication.class, args);
     }
 
 }

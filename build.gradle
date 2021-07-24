@@ -22,14 +22,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-    implementation 'io.springfox:springfox-core:3.0.0'
-    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+    implementation group: 'com.github.kstyrc', name: 'embedded-redis', version: '0.6'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-    implementation 'io.springfox:springfox-swagger2:3.0.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
 }
