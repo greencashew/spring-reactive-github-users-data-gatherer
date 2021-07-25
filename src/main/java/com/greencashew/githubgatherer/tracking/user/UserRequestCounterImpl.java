@@ -16,7 +16,7 @@ class UserRequestCounterImpl implements UserRequestCounter {
     public void notifyUsersRequested(final Flux<String> loginStream) {
         loginStream
                 .flatMap(repository::increment)
-                .doFinally(__ -> log.info("Login occurrences updated successfully!"))
+                .doFinally(__ -> log.info("Login occurrences updated successfully."))
                 .subscribe();
     }
 
