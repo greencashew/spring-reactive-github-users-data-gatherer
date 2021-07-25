@@ -1,4 +1,4 @@
-package com.greencashew.githubgatherer.configuration;
+package com.greencashew.githubgatherer.api;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

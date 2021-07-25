@@ -1,7 +1,5 @@
 package com.greencashew.githubgatherer.gather.user;
 
-import java.util.Set;
-
 import com.greencashew.githubgatherer.dto.UserDataDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +15,8 @@ class GithubUserDataGathererImpl implements GithubUserDataGatherer {
     private final WebClient webClient;
 
     @Override
-    public Flux<UserDataDto> getDataFor(final Set<String> logins) {
-        return Flux.fromIterable(logins)
+    public Flux<UserDataDto> getDataFor(final Flux<String> loginStream) {
+        return loginStream
                 .parallel()
                 .runOn(Schedulers.boundedElastic())
                 .flatMap(this::getUserData)

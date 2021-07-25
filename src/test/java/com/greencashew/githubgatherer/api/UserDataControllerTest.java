@@ -1,12 +1,13 @@
 package com.greencashew.githubgatherer.api;
 
-import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.when;
 
 import com.greencashew.githubgatherer.dto.UserDataDto;
 import com.greencashew.githubgatherer.gather.user.GithubUserDataGatherer;
+import com.greencashew.githubgatherer.tracking.user.UserRequestCounter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ class UserDataControllerTest {
 
     @MockBean
     private GithubUserDataGatherer dataGatherer;
+    @MockBean
+    private UserRequestCounter userRequestCounter;
 
     @Test
     void shouldProperlyGatherExampleUserDetails() {
@@ -39,7 +42,7 @@ class UserDataControllerTest {
                 .calculations(4.52)
                 .build();
 
-        when(dataGatherer.getDataFor(Set.of(exampleUserData.getLogin()))).thenReturn(Flux.just(exampleUserData));
+        when(dataGatherer.getDataFor(any())).thenReturn(Flux.just(exampleUserData));
 
         webTestClient.get()
                 .uri("/users/" + exampleUserData.getLogin())
@@ -63,5 +66,7 @@ class UserDataControllerTest {
                 .value(createdAt -> assertEquals(exampleUserData.getCreatedAt(), createdAt))
                 .jsonPath("$[0].calculations")
                 .value(calculations -> assertEquals(exampleUserData.getCalculations(), calculations));
+
+        then(userRequestCounter).should().notifyUsersRequested(any());
     }
 }

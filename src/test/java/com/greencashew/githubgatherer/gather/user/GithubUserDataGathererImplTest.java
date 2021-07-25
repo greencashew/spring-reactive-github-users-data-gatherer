@@ -1,12 +1,11 @@
 package com.greencashew.githubgatherer.gather.user;
 
-import java.util.Set;
-
 import com.greencashew.githubgatherer.dto.UserDataDto;
 import okhttp3.mockwebserver.MockResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 class GithubUserDataGathererImplTest extends MockWebServerAbstractTest {
@@ -69,7 +68,7 @@ class GithubUserDataGathererImplTest extends MockWebServerAbstractTest {
                         .setBody(EXAMPLE_USER_API_RESPONSE)
         );
 
-        StepVerifier.create(dataGatherer.getDataFor(Set.of("greencashew")))
+        StepVerifier.create(dataGatherer.getDataFor(Flux.just("greencashew")))
                 .expectNextMatches(userDataDto -> userDataDto.equals(USER_DATA_DTO))
                 .verifyComplete();
     }
