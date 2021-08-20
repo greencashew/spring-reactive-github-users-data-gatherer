@@ -3,12 +3,13 @@
 GitHub user data gatherer implemented in reactive way with Spring, Reactive Redis and WebFlux. It is example of usage
 reactive programming with Spring Webflux.
 
-The application download data of multiple github users, calculate scoring for each of the user **(6 / followers_number * (2 + public_repos))** and return json list with user data in the scoring order. Each login request occurrence is saved
+The application download data of multiple GitHub users, calculate scoring for each of the user **(6 / followers_number
+* (2 + public_repos))** and return json list with user data in the scoring order. Each login request occurrence is saved
 to Redis (embedded) database. It is possible to check number of requests for concrete logins only.
 
 ## Live demo
 
-//TODO
+SwaggerUI with available endpoints: https://reactive-github-users-gatherer.herokuapp.com/swagger-ui/
 
 ## API
 
@@ -43,7 +44,7 @@ GET /users/requests/{logins}
 
 ## Local run
 
-It is possible to run application using some Java IDE such as **Intelij** or **Eclipse**. These IDEs cna help you with
+It is possible to run application using some Java IDE such as **Intelij** or **Eclipse**. These IDEs can help you with
 easier gradle servicing.
 
 Console approach (In project directory):
